@@ -3,7 +3,23 @@ import java.util.Scanner;
 
 public class Duke {
     public static void main(String[] args) {
-        Scanner sc=new Scanner(System.in);
+        Scanner in=new Scanner(System.in);
+        initialiseJulia();
+        ArrayList <Task> list = new ArrayList<>();
+
+        int end = 0;
+
+        //loops until end variable becomes 1 meaning the user wrote "bye"
+        while (end == 0){
+            String input = in.nextLine();
+            printLine();
+            end = inputAnalyser(input,list);
+            printLine();
+        }
+    }
+
+    //Prints starting page of Julia the chat bot
+    public static void initialiseJulia(){
         String logo = " _____ _   _ _     _ _____\n"
                 + "|_   _| | | | |   | | . . |\n"
                 + "  | | | | | | |   | | \\_/ |\n"
@@ -18,41 +34,56 @@ public class Duke {
         printLine();
         System.out.println("Hello! I'm Julia\nIs there anything I can do for you today?");
         printLine();
-        int exit = 0;
-        int i = 0;
-        ArrayList <String> list = new ArrayList<>();
-        while (exit == 0){
-            String input = sc.nextLine();
-            printLine();
-            if (input.equals("bye")){
-                exit = 1;
-                System.out.println("Goodbye! I look forward to seeing you the next time!");
-                printLine();
-            }
-            else if (input.equals("list")){
-                printList(list,i);
-            }
-            else {
-                list.add(input);
-                System.out.println("Okay, I have added the following into the list for you!\n" + "-> " + input);
-                printLine();
-                i++;
-            }
+    }
+
+    //Analyses the input given by user and determines the following action
+    public static int inputAnalyser(String input, ArrayList<Task> list){
+        String[] words = input.split(" ");
+
+        //exits the programme
+        if (input.equals("bye")){
+            System.out.println("Goodbye! I look forward to seeing you the next time!");
+            return 1;
+        }
+
+        //lists the tasks
+        else if (input.equals("list")){
+            printList(list);
+            return 0;
+        }
+
+        //checks tasks off the list
+        else if (words[0].equals("done") && words[1].matches(".*\\d*")){
+            int complete = Integer.parseInt(words[1]) - 1;
+            list.get(complete).isDone = true;
+            System.out.println("Good job! I checked this off the list for you:");
+            System.out.println(list.get(complete).getStatusIcon() + " " + list.get(complete).description);
+            return 0;
+        }
+
+        //adds tasks into the list
+        else {
+            Task item = new Task(input);
+            list.add(item);
+            System.out.println("Okay, I have added the following into the list for you!\n" + "-> " + input);
+            return 0;
         }
     }
 
+    //Prints a separator between chat bot and user
     public static void printLine(){
         System.out.println("____________________________________________________________");
     }
 
-    public static void printList(ArrayList<String> list, int size){
-        System.out.println("Here is the collated list:");
-        int i;
-        for (i=0; i<size; i++) {
-            System.out.println("(" + (i + 1) + ") " + list.get(i));
+    //Prints the current collated list based on user inputs
+    public static void printList(ArrayList<Task> list){
+        System.out.println("Here is the collated list of your tasks:");
+        int i = 0;
+        for (Task item: list) {
+            System.out.println("(" + (i + 1) + ") " + item.getStatusIcon() + " " + item.description);
+            i++;
         }
         System.out.println("Feel free to continue adding to the list!");
-        printLine();
     }
 }
 
