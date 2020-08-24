@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Duke {
+    //Main function
     public static void main(String[] args) {
         Scanner in=new Scanner(System.in);
         initialiseJulia();
@@ -54,10 +55,11 @@ public class Duke {
 
         //checks tasks off the list
         else if (words[0].equals("done") && words[1].matches(".*\\d*")){
-            int complete = Integer.parseInt(words[1]) - 1;
-            list.get(complete).isDone = true;
-            System.out.println("Good job! I checked this off the list for you:");
-            System.out.println(list.get(complete).getStatusIcon() + " " + list.get(complete).description);
+            int complete = Integer.parseInt(words[1]);
+            if (complete <= list.size())
+                list.get(complete-1).markAsDone();
+            else
+                System.out.println("No such task found, try again?");
             return 0;
         }
 
@@ -68,6 +70,7 @@ public class Duke {
             System.out.println("Okay, I have added the following into the list for you!\n" + "-> " + input);
             return 0;
         }
+
     }
 
     //Prints a separator between chat bot and user

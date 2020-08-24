@@ -11,4 +11,10 @@ public class Task {
         return (isDone ? "\u2713" : "\u2718"); //return tick or X symbols
     }
 
+    public void markAsDone() {
+        this.isDone = true;
+        System.out.println("Good job! I checked this off the list for you:");
+        System.out.println(this.getStatusIcon() + " " + this.description);
+    }
+
 }
