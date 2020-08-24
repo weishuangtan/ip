@@ -3,14 +3,19 @@ import java.util.Scanner;
 public class Duke {
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
-        String logo = " ____        _        \n"
-                + "|  _ \\ _   _| | _____ \n"
-                + "| | | | | | | |/ / _ \\\n"
-                + "| |_| | |_| |   <  __/\n"
-                + "|____/ \\__,_|_|\\_\\___|\n";
-        System.out.println("Hello from\n" + logo);
+        String logo = " _____ _   _ _     _ _____\n"
+                + "|_   _| | | | |   | | . . |\n"
+                + "  | | | | | | |   | | \\_/ |\n"
+                + "|\\| | | |_| | |___| | | | |\n"
+                + "\\___/ \\_____/\\____|_|_| |_|\n";
+        String textBox = "                 _____________\n"
+                + "                |             |\n"
+                + "                | Hello there!|\n"
+                + "               <|_____________|\n";
+        String emoji = "      \\(｡◕‿◕｡)/";
+        System.out.println(logo + textBox + emoji);
         printLine();
-        System.out.println("Hello! I'm Duke\nWhat can I do for you?");
+        System.out.println("Hello! I'm Julia\nIs there anything I can do for you today?");
         printLine();
         int exit = 0;
         while (exit == 0){
@@ -25,7 +30,7 @@ public class Duke {
             }
         }
 
-        System.out.println("Bye. Hope to see you again soon!");
+        System.out.println("Goodbye! I look forward to seeing you the next time!");
         printLine();
     }
 
