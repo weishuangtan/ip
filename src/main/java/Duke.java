@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Duke {
@@ -19,7 +20,7 @@ public class Duke {
         printLine();
         int exit = 0;
         int i = 0;
-        String[] list = new String[100];
+        ArrayList <String> list = new ArrayList<>();
         while (exit == 0){
             String input = sc.nextLine();
             printLine();
@@ -29,10 +30,10 @@ public class Duke {
                 printLine();
             }
             else if (input.equals("list")){
-                printList(list);
+                printList(list,i);
             }
             else {
-                list[i] = input;
+                list.add(input);
                 System.out.println("Okay, I have added the following into the list for you!\n" + "-> " + input);
                 printLine();
                 i++;
@@ -44,12 +45,11 @@ public class Duke {
         System.out.println("____________________________________________________________");
     }
 
-    public static void printList(String[] list){
+    public static void printList(ArrayList<String> list, int size){
         System.out.println("Here is the collated list:");
-        int i = 0;
-        while(list[i] !=null ){
-            System.out.println("(" + (i+1) + ") " + list[i]);
-            i++;
+        int i;
+        for (i=0; i<size; i++) {
+            System.out.println("(" + (i + 1) + ") " + list.get(i));
         }
         System.out.println("Feel free to continue adding to the list!");
         printLine();
