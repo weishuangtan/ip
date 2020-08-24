@@ -19,26 +19,40 @@ public class Duke {
         printLine();
         int exit = 0;
         int i = 0;
-        String[] inputs = new String[100];
+        String[] list = new String[100];
         while (exit == 0){
-            inputs[i] = sc.nextLine();
+            String input = sc.nextLine();
             printLine();
-            if (inputs[i].equals("bye")){
+            if (input.equals("bye")){
                 exit = 1;
-            }
-            else {
-                System.out.println("Okay, I have added the following into the list for you!\n" + "-> " + inputs[i]);
+                System.out.println("Goodbye! I look forward to seeing you the next time!");
                 printLine();
             }
-            i++;
+            else if (input.equals("list")){
+                printList(list);
+            }
+            else {
+                list[i] = input;
+                System.out.println("Okay, I have added the following into the list for you!\n" + "-> " + input);
+                printLine();
+                i++;
+            }
         }
-
-        System.out.println("Goodbye! I look forward to seeing you the next time!");
-        printLine();
     }
 
     public static void printLine(){
         System.out.println("____________________________________________________________");
+    }
+
+    public static void printList(String[] list){
+        System.out.println("Here is the collated list:");
+        int i = 0;
+        while(list[i] !=null ){
+            System.out.println("(" + (i+1) + ") " + list[i]);
+            i++;
+        }
+        System.out.println("Feel free to continue adding to the list!");
+        printLine();
     }
 }
 
