@@ -18,17 +18,17 @@ public class Duke {
 
     //Prints starting page of Julia the chat bot
     public static void initialiseJulia() {
-        String logo = " _____ _   _ _     _ _____\n"
+        String LOGO = " _____ _   _ _     _ _____\n"
                 + "|_   _| | | | |   | | . . |\n"
                 + "  | | | | | | |   | | \\_/ |\n"
                 + "|\\| | | |_| | |___| | | | |\n"
                 + "\\___/ \\_____/\\____|_|_| |_|\n";
-        String textBox = "                 _____________\n"
+        String TEXT_BOX = "                 _____________\n"
                 + "                |             |\n"
                 + "                | Hello there!|\n"
                 + "               <|_____________|\n";
-        String emoji = "      \\(｡◕‿◕｡)/";
-        System.out.println(logo + textBox + emoji);
+        String EMOJI = "      \\(｡◕‿◕｡)/";
+        System.out.println(LOGO + TEXT_BOX + EMOJI);
         printLine();
         System.out.println("Hello! I'm Julia\nIs there anything I can do for you today?");
         printLine();
