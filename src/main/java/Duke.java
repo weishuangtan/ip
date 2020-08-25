@@ -2,25 +2,22 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Duke {
-    //Main function
     public static void main(String[] args) {
-        Scanner in=new Scanner(System.in);
+        Scanner in = new Scanner(System.in);
         initialiseJulia();
-        ArrayList <Task> list = new ArrayList<>();
-
-        int end = 0;
-
-        //loops until end variable becomes 1 meaning the user wrote "bye"
-        while (end == 0){
+        ArrayList <Task> tasks = new ArrayList<>();
+        int isEnd = 0;
+        // Loops until isEnd variable becomes 1 meaning the user wrote "bye"
+        while (isEnd == 0) {
             String input = in.nextLine();
             printLine();
-            end = inputAnalyser(input,list);
+            isEnd = analyseInput(input,tasks);
             printLine();
         }
     }
 
     //Prints starting page of Julia the chat bot
-    public static void initialiseJulia(){
+    public static void initialiseJulia() {
         String logo = " _____ _   _ _     _ _____\n"
                 + "|_   _| | | | |   | | . . |\n"
                 + "  | | | | | | |   | | \\_/ |\n"
@@ -37,56 +34,59 @@ public class Duke {
         printLine();
     }
 
-    //Analyses the input given by user and determines the following action
-    public static int inputAnalyser(String input, ArrayList<Task> list){
+    // Analyses the input given by user and determines the following action
+    public static int analyseInput(String input, ArrayList<Task> tasks) {
         String[] words = input.split(" ");
-
-        //exits the programme
-        if (input.equals("bye")){
+        if (input.equals("bye")) {
+            // Exits the programme
             System.out.println("Goodbye! I look forward to seeing you the next time!");
             return 1;
-        }
-
-        //lists the tasks
-        else if (input.equals("list")){
-            printList(list);
+        } else if (input.equals("list")) {
+            // Lists the tasks
+            printList(tasks);
             return 0;
-        }
-
-        //checks tasks off the list
-        else if (words[0].equals("done") && words[1].matches(".*\\d*")){
-            int complete = Integer.parseInt(words[1]);
-            if (complete <= list.size())
-                list.get(complete-1).markAsDone();
-            else
+        } else if (input.startsWith("done")) {
+            // Checks task off the list
+            try {
+                int complete = Integer.parseInt(words[1]);
+                if (complete <= tasks.size()) {
+                    tasks.get(complete - 1).markAsDone();
+                } else {
+                    System.out.println("No such task found, try again?");
+                }
+                return 0;
+            } catch (Exception e) {
                 System.out.println("No such task found, try again?");
-            return 0;
-        }
-
-        //adds tasks into the list
-        else {
+                return 0;
+            }
+        } else {
+            // Adds tasks into the list
             Task item = new Task(input);
-            list.add(item);
+            tasks.add(item);
             System.out.println("Okay, I have added the following into the list for you!\n" + "-> " + input);
             return 0;
         }
 
     }
 
-    //Prints a separator between chat bot and user
-    public static void printLine(){
+    // Prints a separator between chat bot and user
+    public static void printLine() {
         System.out.println("____________________________________________________________");
     }
 
-    //Prints the current collated list based on user inputs
-    public static void printList(ArrayList<Task> list){
-        System.out.println("Here is the collated list of your tasks:");
-        int i = 0;
-        for (Task item: list) {
-            System.out.println("(" + (i + 1) + ") " + item.getStatusIcon() + " " + item.description);
-            i++;
+    // Prints the current collated list based on user inputs
+    public static void printList(ArrayList<Task> tasks) {
+        if (tasks.size() == 0) {
+            System.out.println("Looks like you have no task yet!");
+        } else {
+            System.out.println("Here is the collated list of your tasks:");
+            int i = 0;
+            for (Task task: tasks) {
+                System.out.println("(" + (i + 1) + ") " + task.getStatusIcon() + " " + task.description);
+                i++;
+            }
         }
-        System.out.println("Feel free to continue adding to the list!");
+        System.out.println("Feel free to continue adding to the list! :)");
     }
 }
 
