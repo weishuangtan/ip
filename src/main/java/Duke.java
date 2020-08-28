@@ -2,19 +2,20 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Duke {
+
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         initialiseJulia();
         ArrayList <Task> tasks = new ArrayList<>();
-        int isEnd = 0;
-        // Loops until isEnd variable becomes 1 meaning the user wrote "bye"
-        while (isEnd == 0) {
+        State state = State.running;
+        while (state == State.running) {
             String input = in.nextLine();
             printLine();
-            isEnd = analyseInput(input,tasks);
+            state = analyseInput(input,tasks);
             printLine();
         }
     }
+
 
     //Prints starting page of Julia the chat bot
     public static void initialiseJulia() {
@@ -35,16 +36,16 @@ public class Duke {
     }
 
     // Analyses the input given by user and determines the following action
-    public static int analyseInput(String input, ArrayList<Task> tasks) {
+    public static State analyseInput(String input, ArrayList<Task> tasks) {
         String[] words = input.split(" ");
         if (input.equals("bye")) {
             // Exits the programme
             System.out.println("Goodbye! I look forward to seeing you the next time!");
-            return 1;
+            return State.stop;
         } else if (input.equals("list")) {
             // Lists the tasks
             printList(tasks);
-            return 0;
+            return State.running;
         } else if (input.startsWith("done")) {
             // Checks task off the list
             try {
@@ -54,17 +55,17 @@ public class Duke {
                 } else {
                     System.out.println("No such task found, try again?");
                 }
-                return 0;
+                return State.running;
             } catch (Exception e) {
                 System.out.println("No such task found, try again?");
-                return 0;
+                return State.running;
             }
         } else {
             // Adds tasks into the list
             Task item = new Task(input);
             tasks.add(item);
             System.out.println("Okay, I have added the following into the list for you!\n" + "-> " + input);
-            return 0;
+            return State.running;
         }
 
     }
