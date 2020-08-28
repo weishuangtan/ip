@@ -40,7 +40,7 @@ public class Duke {
         String[] words = input.split(" ");
         if (input.equals("bye")) {
             // Exits the programme
-            System.out.println("Goodbye! I look forward to seeing you the next time!");
+            printGoodbye();
             return State.stop;
         } else if (input.equals("list")) {
             // Lists the tasks
@@ -49,30 +49,44 @@ public class Duke {
         } else if (input.startsWith("done")) {
             // Checks task off the list
             try {
-                int complete = Integer.parseInt(words[1]);
-                if (complete <= tasks.size()) {
-                    tasks.get(complete - 1).markAsDone();
-                } else {
-                    System.out.println("No such task found, try again?");
-                }
+                checkTaskOff(words[1],tasks);
                 return State.running;
             } catch (Exception e) {
-                System.out.println("No such task found, try again?");
+                printNotFound();
                 return State.running;
             }
         } else {
             // Adds tasks into the list
-            Task item = new Task(input);
-            tasks.add(item);
-            System.out.println("Okay, I have added the following into the list for you!\n" + "-> " + input);
+            addTask(input,tasks);
             return State.running;
         }
 
     }
 
+
+    // Tries checking given  task off the list
+    public static void checkTaskOff(String word, ArrayList<Task> tasks){
+        int complete = Integer.parseInt(word);
+        if (complete <= tasks.size()) {
+            tasks.get(complete - 1).markAsDone();
+        } else {
+            printNotFound();
+        }
+    }
+
     // Prints a separator between chat bot and user
     public static void printLine() {
         System.out.println("____________________________________________________________");
+    }
+
+    // Prints goodbye message
+    public static void printGoodbye(){
+        System.out.println("Goodbye! I look forward to seeing you the next time!");
+    }
+
+    // Prints error message
+    public static void printNotFound(){
+        System.out.println("No such task found, try again?");
     }
 
     // Prints the current collated list based on user inputs
@@ -88,6 +102,13 @@ public class Duke {
             }
         }
         System.out.println("Feel free to continue adding to the list! :)");
+    }
+
+    // Adds given task into the list of tasks
+    public static void addTask(String input, ArrayList<Task> tasks){
+        Task item = new Task(input);
+        tasks.add(item);
+        System.out.println("Okay, I have added the following into the list for you!\n" + "-> " + input);
     }
 }
 
