@@ -25,30 +25,22 @@ public class Duke {
      */
     public static State analyseInput(String input, ArrayList<Task> tasks) {
         if (input.equals("bye")) {
-            // Exits the programme
             printGoodbye();
             return State.stop;
         } else if (input.equals("list")) {
-            // Lists the tasks
             printList(tasks);
         } else if (input.startsWith("done")) {
-            // Checks task off the list
             checkTaskOff(input, tasks);
         } else if (input.startsWith("todo")) {
-            // Adds to do tasks
             addToDo(input, tasks);
         } else if (input.startsWith("deadline")) {
-            // Adds deadline tasks
             addDeadline(input, tasks);
         } else if (input.startsWith("event")) {
-            // Adds event tasks
             addEvent(input, tasks);
         } else {
-            // Adds tasks into the list
             addTask(input, tasks);
         }
         return State.running;
-
     }
 
 
@@ -96,7 +88,7 @@ public class Duke {
     /**
      * Prints incorrect format message
      */
-    public static void printIncorrectFormat(){
+    public static void printIncorrectFormat() {
         System.out.println("Incorrect format, please try again!");
     }
 
@@ -106,10 +98,10 @@ public class Duke {
      * @param item task description
      * @param numberOfTasks number of tasks in the current list
      */
-    public static void printAdded(Task item, int numberOfTasks){
+    public static void printAdded(Task item, int numberOfTasks) {
         System.out.println("Okay, I have added the following into the list for you!\n" + "-> " + item);
         System.out.print("Now you have " + numberOfTasks);
-        if (numberOfTasks==1){
+        if (numberOfTasks==1) {
             System.out.print(" task");
         } else {
             System.out.print(" tasks");
@@ -151,7 +143,7 @@ public class Duke {
             } else {
                 printNotFound();
             }
-        } catch (Exception e){
+        } catch (Exception e) {
             printIncorrectFormat();
         }
     }
@@ -168,7 +160,7 @@ public class Duke {
             ToDo item = new ToDo(task);
             tasks.add(item);
             printAdded(item,tasks.size());
-        } catch (Exception e){
+        } catch (Exception e) {
             printIncorrectFormat();
         }
     }
@@ -180,14 +172,14 @@ public class Duke {
      * @param tasks list of tasks
      */
     public static void addDeadline(String input, ArrayList<Task> tasks) {
-        try{
+        try {
             String task = input.substring(9);
             String[] descriptionAndBy = task.split(" /by ");
 
             Deadline item = new Deadline(descriptionAndBy[0], descriptionAndBy[1]);
             tasks.add(item);
             printAdded(item,tasks.size());
-        } catch (Exception e){
+        } catch (Exception e) {
             printIncorrectFormat();
         }
 
@@ -200,17 +192,15 @@ public class Duke {
      * @param tasks list of tasks
      */
     public static void addEvent(String input, ArrayList<Task> tasks) {
-        try{
+        try {
             String task = input.substring(6);
             String[] descriptionAndBy = task.split(" /at ");
-
             Event item = new Event(descriptionAndBy[0], descriptionAndBy[1]);
             tasks.add(item);
             printAdded(item,tasks.size());
-        } catch (Exception e){
+        } catch (Exception e) {
             printIncorrectFormat();
         }
-
     }
 
     /**
