@@ -40,6 +40,9 @@ public class Duke {
         } else if (input.startsWith("deadline")) {
             // Adds deadline tasks
             addDeadline(input, tasks);
+        } else if (input.startsWith("event")) {
+            // Adds event tasks
+            addEvent(input, tasks);
         } else {
             // Adds tasks into the list
             addTask(input, tasks);
@@ -98,6 +101,23 @@ public class Duke {
     }
 
     /**
+     * Prints message when task has been added
+     *
+     * @param item task description
+     * @param numberOfTasks number of tasks in the current list
+     */
+    public static void printAdded(Task item, int numberOfTasks){
+        System.out.println("Okay, I have added the following into the list for you!\n" + "-> " + item);
+        System.out.print("Now you have " + numberOfTasks);
+        if (numberOfTasks==1){
+            System.out.print(" task");
+        } else {
+            System.out.print(" tasks");
+        }
+        System.out.println(" in the list.");
+    }
+
+    /**
      * Prints the current collated list based on user inputs
      *
      * @param tasks list of tasks
@@ -131,14 +151,13 @@ public class Duke {
             } else {
                 printNotFound();
             }
-        }
-        catch (Exception e){
+        } catch (Exception e){
             printIncorrectFormat();
         }
     }
 
     /**
-     * Add To Do task into the list of tasks
+     * Adds To Do task into the list of tasks
      *
      * @param input user's input
      * @param tasks list of tasks
@@ -148,15 +167,14 @@ public class Duke {
             String task = input.substring(5);
             ToDo item = new ToDo(task);
             tasks.add(item);
-            System.out.println("Okay, I have added the following into the list for you!\n" + "-> " + item);
-        }
-        catch (Exception e){
+            printAdded(item,tasks.size());
+        } catch (Exception e){
             printIncorrectFormat();
         }
     }
 
     /**
-     * Add Deadline task into the list of tasks
+     * Adds Deadline task into the list of tasks
      *
      * @param input user's input
      * @param tasks list of tasks
@@ -164,14 +182,32 @@ public class Duke {
     public static void addDeadline(String input, ArrayList<Task> tasks) {
         try{
             String task = input.substring(9);
-            String[] descriptionAndBy = task.split(" /p ");
+            String[] descriptionAndBy = task.split(" /by ");
 
             Deadline item = new Deadline(descriptionAndBy[0], descriptionAndBy[1]);
             tasks.add(item);
-            System.out.println("Okay, I have added the following into the list for you!\n" + "-> " + item);
-
+            printAdded(item,tasks.size());
+        } catch (Exception e){
+            printIncorrectFormat();
         }
-        catch (Exception e){
+
+    }
+
+    /**
+     * Adds Event task into the list of tasks
+     *
+     * @param input user's input
+     * @param tasks list of tasks
+     */
+    public static void addEvent(String input, ArrayList<Task> tasks) {
+        try{
+            String task = input.substring(6);
+            String[] descriptionAndBy = task.split(" /at ");
+
+            Event item = new Event(descriptionAndBy[0], descriptionAndBy[1]);
+            tasks.add(item);
+            printAdded(item,tasks.size());
+        } catch (Exception e){
             printIncorrectFormat();
         }
 
@@ -184,10 +220,9 @@ public class Duke {
      * @param tasks list of tasks
      */
     public static void addTask(String input, ArrayList<Task> tasks) {
-
         Task item = new Task(input);
         tasks.add(item);
-        System.out.println("Okay, I have added the following into the list for you!\n" + "-> " + input);
+        printAdded(item,tasks.size());
     }
 }
 
