@@ -1,7 +1,47 @@
-Hello from
- ____        _        
-|  _ \ _   _| | _____ 
-| | | | | | | |/ / _ \
-| |_| | |_| |   <  __/
-|____/ \__,_|_|\_\___|
-
+ _____ _   _ _     _ _____
+|_   _| | | | |   | | . . |
+  | | | | | | |   | | \_/ |
+|\| | | |_| | |___| | | | |
+\___/ \_____/\____|_|_| |_|
+                 _____________
+                |             |
+                | Hello there!|
+               <|_____________|
+      \(｡◕‿◕｡)/
+____________________________________________________________
+Hello! I'm Julia
+Is there anything I can do for you today?
+____________________________________________________________
+____________________________________________________________
+Looks like you have no task yet!
+Feel free to continue adding to the list! :)
+____________________________________________________________
+____________________________________________________________
+Okay, I have added the following into the list for you!
+-> 𝕋 ✘ CS2113T notes today
+Now you have 1 task in the list.
+____________________________________________________________
+____________________________________________________________
+Okay, I have added the following into the list for you!
+-> 𝔼 ✘ CSC elections (at: Sunday 5pm)
+Now you have 2 tasks in the list.
+____________________________________________________________
+____________________________________________________________
+Okay, I have added the following into the list for you!
+-> 𝔻 ✘ CS2113T iP task (by: before tutorial)
+Now you have 3 tasks in the list.
+____________________________________________________________
+____________________________________________________________
+Here is the collated list of your tasks:
+(1) 𝕋 ✘ CS2113T notes today
+(2) 𝔼 ✘ CSC elections (at: Sunday 5pm)
+(3) 𝔻 ✘ CS2113T iP task (by: before tutorial)
+Feel free to continue adding to the list! :)
+____________________________________________________________
+____________________________________________________________
+Good job! I checked this off the list for you:
+𝔼 ✓ CSC elections (at: Sunday 5pm)
+____________________________________________________________
+____________________________________________________________
+Goodbye! I look forward to seeing you the next time!
+____________________________________________________________

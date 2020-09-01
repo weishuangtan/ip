@@ -1,0 +1,7 @@
+list
+todo CS2113T notes today
+event CSC elections /at Sunday 5pm
+deadline CS2113T iP task /by before tutorial
+list
+done 2
+bye
