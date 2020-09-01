@@ -57,7 +57,7 @@ public class Duke {
                 + "                |             |\n"
                 + "                | Hello there!|\n"
                 + "               <|_____________|\n";
-        String EMOJI = "      \\(｡◕‿◕｡)/";
+        String EMOJI = "      \\(\uFF61\u25D5\u203F\u25D5\uFF61)/";
         System.out.println(LOGO + TEXT_BOX + EMOJI);
         printLine();
         System.out.println("Hello! I'm Julia\nIs there anything I can do for you today?");
