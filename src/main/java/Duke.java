@@ -38,7 +38,7 @@ public class Duke {
         } else if (input.startsWith("event")) {
             addEvent(input, tasks);
         } else {
-            addTask(input, tasks);
+            printCannotRead();
         }
         return State.running;
     }
@@ -86,10 +86,50 @@ public class Duke {
     }
 
     /**
-     * Prints incorrect format message
+     * Prints incorrect format message for To Do
      */
-    public static void printIncorrectFormat() {
-        System.out.println("Incorrect format, please try again!");
+    public static void printToDoIncorrectFormat() {
+        System.out.println("Incorrect format for todo, please try again!");
+        System.out.println("Here is an example on how you can add a todo task into the list: ");
+        System.out.println("\"todo Tutorials for this week\"");
+    }
+
+    /**
+     * Prints incorrect format message for done
+     */
+    public static void printDoneIncorrectFormat(){
+        System.out.println("Incorrect format for done, please try again!");
+        System.out.println("Here is an example on how you can use the done command: ");
+        System.out.println("\"done 3\"");
+    }
+
+    /**
+     * Prints incorrect format message for event
+     */
+    public static void printEventIncorrectFormat(){
+        System.out.println("Incorrect format for event, please try again!");
+        System.out.println("Here is an example on how you can add an event task into the list: ");
+        System.out.println("\"event Tutorial class /at 10:00AM\"");
+    }
+
+    /**
+     * Prints incorrect format message for deadline
+     */
+    public static void printDeadlineIncorrectFormat(){
+        System.out.println("Incorrect format for deadline, please try again!");
+        System.out.println("Here is an example on how you can add a deadline task into the list: ");
+        System.out.println("\"deadline Math homework /by end of this week\"");
+    }
+
+
+    /**
+     * Prints when user input is invalid
+     */
+    public static void printCannotRead(){
+        System.out.println("Oh no, so sorry but I cannot understand that :(");
+        System.out.println("Try using \"todo\", \"event\" or \"deadline\" to add tasks!");
+        System.out.println("You can also use \"done\" to mark your tasks as done, or");
+        System.out.println("use \"list\" to list out all your existing tasks!");
     }
 
     /**
@@ -144,7 +184,7 @@ public class Duke {
                 printNotFound();
             }
         } catch (Exception e) {
-            printIncorrectFormat();
+            printDoneIncorrectFormat();
         }
     }
 
@@ -155,13 +195,14 @@ public class Duke {
      * @param tasks list of tasks
      */
     public static void addToDo(String input, ArrayList<Task> tasks) {
-        try {
+        String[] words = input.split(" ");
+        if (words.length > 1) {
             String task = input.substring(5);
             ToDo item = new ToDo(task);
             tasks.add(item);
-            printAdded(item,tasks.size());
-        } catch (Exception e) {
-            printIncorrectFormat();
+            printAdded(item, tasks.size());
+        } else {
+            printToDoIncorrectFormat();
         }
     }
 
@@ -180,7 +221,7 @@ public class Duke {
             tasks.add(item);
             printAdded(item,tasks.size());
         } catch (Exception e) {
-            printIncorrectFormat();
+            printDeadlineIncorrectFormat();
         }
 
     }
@@ -199,21 +240,10 @@ public class Duke {
             tasks.add(item);
             printAdded(item,tasks.size());
         } catch (Exception e) {
-            printIncorrectFormat();
+            printEventIncorrectFormat();
         }
     }
 
-    /**
-     * Adds given task into the list of tasks
-     *
-     * @param input task description
-     * @param tasks list of tasks
-     */
-    public static void addTask(String input, ArrayList<Task> tasks) {
-        Task item = new Task(input);
-        tasks.add(item);
-        printAdded(item,tasks.size());
-    }
 }
 
 
