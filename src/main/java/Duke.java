@@ -38,7 +38,7 @@ public class Duke {
         } else if (input.startsWith("event")) {
             addEvent(input, tasks);
         } else {
-            printCannotRead();
+            new DukeException().getErrorMessage("invalid");
         }
         return State.running;
     }
@@ -76,60 +76,6 @@ public class Duke {
      */
     public static void printGoodbye() {
         System.out.println("Goodbye! I look forward to seeing you the next time!");
-    }
-
-    /**
-     * Prints error message
-     */
-    public static void printNotFound() {
-        System.out.println("No such task found, try again?");
-    }
-
-    /**
-     * Prints incorrect format message for To Do
-     */
-    public static void printToDoIncorrectFormat() {
-        System.out.println("Incorrect format for todo, please try again!");
-        System.out.println("Here is an example on how you can add a todo task into the list: ");
-        System.out.println("\"todo Tutorials for this week\"");
-    }
-
-    /**
-     * Prints incorrect format message for done
-     */
-    public static void printDoneIncorrectFormat(){
-        System.out.println("Incorrect format for done, please try again!");
-        System.out.println("Here is an example on how you can use the done command: ");
-        System.out.println("\"done 3\"");
-    }
-
-    /**
-     * Prints incorrect format message for event
-     */
-    public static void printEventIncorrectFormat(){
-        System.out.println("Incorrect format for event, please try again!");
-        System.out.println("Here is an example on how you can add an event task into the list: ");
-        System.out.println("\"event Tutorial class /at 10:00AM\"");
-    }
-
-    /**
-     * Prints incorrect format message for deadline
-     */
-    public static void printDeadlineIncorrectFormat(){
-        System.out.println("Incorrect format for deadline, please try again!");
-        System.out.println("Here is an example on how you can add a deadline task into the list: ");
-        System.out.println("\"deadline Math homework /by end of this week\"");
-    }
-
-
-    /**
-     * Prints when user input is invalid
-     */
-    public static void printCannotRead(){
-        System.out.println("Oh no, so sorry but I cannot understand that :(");
-        System.out.println("Try using \"todo\", \"event\" or \"deadline\" to add tasks!");
-        System.out.println("You can also use \"done\" to mark your tasks as done, or");
-        System.out.println("use \"list\" to list out all your existing tasks!");
     }
 
     /**
@@ -181,10 +127,10 @@ public class Duke {
             if (complete <= tasks.size()) {
                 tasks.get(complete - 1).markAsDone();
             } else {
-                printNotFound();
+                new DukeException().getErrorMessage("not found");
             }
         } catch (Exception e) {
-            printDoneIncorrectFormat();
+            new DukeException().getErrorMessage("done");
         }
     }
 
@@ -202,7 +148,7 @@ public class Duke {
             tasks.add(item);
             printAdded(item, tasks.size());
         } else {
-            printToDoIncorrectFormat();
+            new DukeException().getErrorMessage("todo");
         }
     }
 
@@ -221,7 +167,7 @@ public class Duke {
             tasks.add(item);
             printAdded(item,tasks.size());
         } catch (Exception e) {
-            printDeadlineIncorrectFormat();
+            new DukeException().getErrorMessage("deadline");
         }
 
     }
@@ -240,7 +186,7 @@ public class Duke {
             tasks.add(item);
             printAdded(item,tasks.size());
         } catch (Exception e) {
-            printEventIncorrectFormat();
+            new DukeException().getErrorMessage("event");
         }
     }
 
