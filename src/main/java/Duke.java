@@ -5,14 +5,14 @@ public class Duke {
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        initialiseJulia();
+        Messages.initialiseJulia();
         ArrayList<Task> tasks = new ArrayList<>();
         State state = State.running;
         while (state == State.running) {
             String input = in.nextLine();
-            printLine();
+            Messages.printLine();
             state = analyseInput(input, tasks);
-            printLine();
+            Messages.printLine();
         }
     }
 
@@ -25,7 +25,7 @@ public class Duke {
      */
     public static State analyseInput(String input, ArrayList<Task> tasks) {
         if (input.equals("bye")) {
-            printGoodbye();
+            Messages.printGoodbye();
             return State.stop;
         } else if (input.equals("list")) {
             printList(tasks);
@@ -38,45 +38,12 @@ public class Duke {
         } else if (input.startsWith("event")) {
             addEvent(input, tasks);
         } else {
-            new DukeException().getErrorMessage("invalid");
+            Messages.printInvalidInput();
         }
         return State.running;
     }
 
 
-    /**
-     * Prints starting page of Julia the chat bot
-     */
-    public static void initialiseJulia() {
-        String LOGO = " _____ _   _ _     _ _____\n"
-                + "|_   _| | | | |   | | . . |\n"
-                + "  | | | | | | |   | | \\_/ |\n"
-                + "|\\| | | |_| | |___| | | | |\n"
-                + "\\___/ \\_____/\\____|_|_| |_|\n";
-        String TEXT_BOX = "                 _____________\n"
-                + "                |             |\n"
-                + "                | Hello there!|\n"
-                + "               <|_____________|\n";
-        String EMOJI = "      \\(\uFF61\u25D5\u203F\u25D5\uFF61)/";
-        System.out.println(LOGO + TEXT_BOX + EMOJI);
-        printLine();
-        System.out.println("Hello! I'm Julia\nIs there anything I can do for you today?");
-        printLine();
-    }
-
-    /**
-     * Prints a separator between chat bot and user
-     */
-    public static void printLine() {
-        System.out.println("____________________________________________________________");
-    }
-
-    /**
-     * Prints goodbye message
-     */
-    public static void printGoodbye() {
-        System.out.println("Goodbye! I look forward to seeing you the next time!");
-    }
 
     /**
      * Prints message when task has been added
@@ -120,17 +87,20 @@ public class Duke {
      * @param input user's input
      * @param tasks list of tasks
      */
-    public static void checkTaskOff(String input, ArrayList<Task> tasks) {
+    public static void checkTaskOff (String input, ArrayList<Task> tasks) {
         String[] words = input.split(" ");
+
         try {
             int complete = Integer.parseInt(words[1]);
             if (complete <= tasks.size()) {
                 tasks.get(complete - 1).markAsDone();
             } else {
-                new DukeException().getErrorMessage("not found");
+                throw new DukeException();
             }
-        } catch (Exception e) {
-            new DukeException().getErrorMessage("done");
+        } catch (DukeException e){
+            Messages.printNotFound();
+        } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
+            Messages.printDoneIncorrectFormat();
         }
     }
 
@@ -141,14 +111,18 @@ public class Duke {
      * @param tasks list of tasks
      */
     public static void addToDo(String input, ArrayList<Task> tasks) {
-        String[] words = input.split(" ");
-        if (words.length > 1) {
-            String task = input.substring(5);
-            ToDo item = new ToDo(task);
-            tasks.add(item);
-            printAdded(item, tasks.size());
-        } else {
-            new DukeException().getErrorMessage("todo");
+        try {
+            String[] words = input.split(" ");
+            if (words.length > 1) {
+                String task = input.substring(5);
+                ToDo item = new ToDo(task);
+                tasks.add(item);
+                printAdded(item, tasks.size());
+            } else {
+                throw new DukeException();
+            }
+        } catch (DukeException e){
+            Messages.printToDoIncorrectFormat();
         }
     }
 
@@ -166,10 +140,9 @@ public class Duke {
             Deadline item = new Deadline(descriptionAndBy[0], descriptionAndBy[1]);
             tasks.add(item);
             printAdded(item,tasks.size());
-        } catch (Exception e) {
-            new DukeException().getErrorMessage("deadline");
+        }  catch (StringIndexOutOfBoundsException | ArrayIndexOutOfBoundsException e ) {
+            Messages.printDeadlineIncorrectFormat();
         }
-
     }
 
     /**
@@ -185,8 +158,8 @@ public class Duke {
             Event item = new Event(descriptionAndBy[0], descriptionAndBy[1]);
             tasks.add(item);
             printAdded(item,tasks.size());
-        } catch (Exception e) {
-            new DukeException().getErrorMessage("event");
+        } catch (StringIndexOutOfBoundsException | ArrayIndexOutOfBoundsException e) {
+            Messages.printEventIncorrectFormat();
         }
     }
 
