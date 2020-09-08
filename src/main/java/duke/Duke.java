@@ -1,3 +1,13 @@
+package duke;
+
+import duke.system.DukeException;
+import duke.system.Messages;
+import duke.system.State;
+import duke.tasks.Deadline;
+import duke.tasks.Event;
+import duke.tasks.Task;
+import duke.tasks.ToDo;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -57,7 +67,7 @@ public class Duke {
         if (numberOfTasks==1) {
             System.out.print(" task");
         } else {
-            System.out.print(" tasks");
+            System.out.print("duke");
         }
         System.out.println(" in the list.");
     }
@@ -127,7 +137,7 @@ public class Duke {
     }
 
     /**
-     * Adds Deadline task into the list of tasks
+     * Adds Tasks.Deadline task into the list of tasks
      *
      * @param input user's input
      * @param tasks list of tasks
@@ -146,7 +156,7 @@ public class Duke {
     }
 
     /**
-     * Adds Event task into the list of tasks
+     * Adds Tasks.Event task into the list of tasks
      *
      * @param input user's input
      * @param tasks list of tasks
