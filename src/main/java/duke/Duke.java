@@ -47,6 +47,8 @@ public class Duke {
             addDeadline(input, tasks);
         } else if (input.startsWith("event")) {
             addEvent(input, tasks);
+        } else if (input.startsWith("delete")){
+            deleteEvent(input,tasks);
         } else {
             Messages.printInvalidInput();
         }
@@ -64,7 +66,7 @@ public class Duke {
     public static void printAdded(Task item, int numberOfTasks) {
         System.out.println("Okay, I have added the following into the list for you!\n" + "-> " + item);
         System.out.print("Now you have " + numberOfTasks);
-        if (numberOfTasks==1) {
+        if (numberOfTasks == 1) {
             System.out.print(" task");
         } else {
             System.out.print("duke");
@@ -150,7 +152,7 @@ public class Duke {
             Deadline item = new Deadline(descriptionAndBy[0], descriptionAndBy[1]);
             tasks.add(item);
             printAdded(item,tasks.size());
-        }  catch (StringIndexOutOfBoundsException | ArrayIndexOutOfBoundsException e ) {
+        }  catch (IndexOutOfBoundsException e ) {
             Messages.printDeadlineIncorrectFormat();
         }
     }
@@ -168,8 +170,26 @@ public class Duke {
             Event item = new Event(descriptionAndBy[0], descriptionAndBy[1]);
             tasks.add(item);
             printAdded(item,tasks.size());
-        } catch (StringIndexOutOfBoundsException | ArrayIndexOutOfBoundsException e) {
+        } catch (IndexOutOfBoundsException e) {
             Messages.printEventIncorrectFormat();
+        }
+    }
+
+    public static void deleteEvent(String input, ArrayList<Task> tasks){
+        String[] words = input.split(" ");
+
+        try {
+            int delete = Integer.parseInt(words[1]);
+            if (delete <= tasks.size()) {
+                tasks.get(delete-1).delete(tasks.size()-1);
+                tasks.remove(delete-1);
+            } else {
+                throw new DukeException();
+            }
+        } catch (DukeException e){
+            Messages.printNotFound();
+        } catch (NumberFormatException | IndexOutOfBoundsException e) {
+            Messages.printDeleteIncorrectFormat();
         }
     }
 
