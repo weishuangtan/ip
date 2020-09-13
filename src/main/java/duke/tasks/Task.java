@@ -19,6 +19,10 @@ public class Task {
         System.out.println(this);
     }
 
+    public void isDone() {
+        this.isDone = true;
+    }
+
     public String toString(){
         return getStatusIcon() + " " + description;
     }

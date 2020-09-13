@@ -9,6 +9,7 @@ import duke.tasks.Task;
 import duke.tasks.ToDo;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -31,23 +32,45 @@ public class Duke {
         }
     }
 
+    public static void writeToFile(ArrayList<Task> tasks) throws IOException {
+        FileWriter fileWriter = new FileWriter("duke.txt");
+        fileWriter.write("Here is the collated list of your tasks:" + System.lineSeparator());
+        int i = 0;
+        for (Task task : tasks) {
+            fileWriter.append("(").append(String.valueOf(i + 1)).append(") ").append(String.valueOf(task)).
+                    append(System.lineSeparator());
+            i++;
+        }
+        fileWriter.close();
+    }
 
     public static void loadList(Scanner readFile, ArrayList<Task> tasks){
         while(readFile.hasNext()){
             String line = readFile.nextLine();
-            String taskLine = line.substring((9));
             if (line.contains("\uD835\uDD4B")) { //To Do
+                String taskLine = line.substring((line.indexOf("\uD835\uDD4B") + 5));
                 ToDo item = new ToDo(taskLine);
+                if (line.contains("\u2713")) {
+                    item.isDone();
+                }
                 tasks.add(item);
             } else if (line.contains("\uD835\uDD3C")) { //Event
+                String taskLine = line.substring((line.indexOf("\uD835\uDD3C") + 5));
                 String[] descriptionAndAt = taskLine.split(" \\(at: ");
                 descriptionAndAt[1] = descriptionAndAt[1].substring(0, descriptionAndAt[1].length()-1);
                 Event item = new Event(descriptionAndAt[0], descriptionAndAt[1]);
+                if (line.contains("\u2713")) {
+                    item.isDone();
+                }
                 tasks.add(item);
             } else if (line.contains("\uD835\uDD3B")) { //Deadline
+                String taskLine = line.substring((line.indexOf("\uD835\uDD3B") + 5));
                 String[] descriptionAndBy = taskLine.split(" \\(by: ");
                 descriptionAndBy[1] = descriptionAndBy[1].substring(0, descriptionAndBy[1].length()-1);
                 Deadline item = new Deadline(descriptionAndBy[0], descriptionAndBy[1]);
+                if (line.contains("\u2713")) {
+                    item.isDone();
+                }
                 tasks.add(item);
             }
         }
@@ -150,6 +173,7 @@ public class Duke {
             int complete = Integer.parseInt(words[1]);
             if (complete <= tasks.size()) {
                 tasks.get(complete - 1).markAsDone();
+                writeToFile(tasks);
             } else {
                 throw new DukeException();
             }
@@ -157,6 +181,8 @@ public class Duke {
             Messages.printNotFound();
         } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
             Messages.printDoneIncorrectFormat();
+        } catch (IOException e) {
+            System.out.println("Something went wrong: " + e.getMessage());
         }
     }
 
@@ -174,11 +200,14 @@ public class Duke {
                 ToDo item = new ToDo(task);
                 tasks.add(item);
                 printAdded(item, tasks.size());
+                writeToFile(tasks);
             } else {
                 throw new DukeException();
             }
         } catch (DukeException e){
             Messages.printToDoIncorrectFormat();
+        } catch (IOException e) {
+            System.out.println("Something went wrong: " + e.getMessage());
         }
     }
 
@@ -196,8 +225,11 @@ public class Duke {
             Deadline item = new Deadline(descriptionAndBy[0], descriptionAndBy[1]);
             tasks.add(item);
             printAdded(item,tasks.size());
+            writeToFile(tasks);
         }  catch (StringIndexOutOfBoundsException | ArrayIndexOutOfBoundsException e ) {
             Messages.printDeadlineIncorrectFormat();
+        } catch (IOException e) {
+            System.out.println("Something went wrong: " + e.getMessage());
         }
     }
 
@@ -214,8 +246,11 @@ public class Duke {
             Event item = new Event(descriptionAndAt[0], descriptionAndAt[1]);
             tasks.add(item);
             printAdded(item,tasks.size());
+            writeToFile(tasks);
         } catch (StringIndexOutOfBoundsException | ArrayIndexOutOfBoundsException e) {
             Messages.printEventIncorrectFormat();
+        } catch (IOException e) {
+            System.out.println("Something went wrong: " + e.getMessage());
         }
     }
 
