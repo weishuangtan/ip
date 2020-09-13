@@ -22,6 +22,7 @@ public class Duke {
         Scanner in = new Scanner(System.in);
         Messages.initialiseJulia();
         ArrayList<Task> tasks = new ArrayList<>();
+        loadList(readFile,tasks);
         while (state == State.running) {
             String input = in.nextLine();
             Messages.printLine();
@@ -29,6 +30,29 @@ public class Duke {
             Messages.printLine();
         }
     }
+
+
+    public static void loadList(Scanner readFile, ArrayList<Task> tasks){
+        while(readFile.hasNext()){
+            String line = readFile.nextLine();
+            String taskLine = line.substring((9));
+            if (line.contains("\uD835\uDD4B")) { //To Do
+                ToDo item = new ToDo(taskLine);
+                tasks.add(item);
+            } else if (line.contains("\uD835\uDD3C")) { //Event
+                String[] descriptionAndAt = taskLine.split(" \\(at: ");
+                descriptionAndAt[1] = descriptionAndAt[1].substring(0, descriptionAndAt[1].length()-1);
+                Event item = new Event(descriptionAndAt[0], descriptionAndAt[1]);
+                tasks.add(item);
+            } else if (line.contains("\uD835\uDD3B")) { //Deadline
+                String[] descriptionAndBy = taskLine.split(" \\(by: ");
+                descriptionAndBy[1] = descriptionAndBy[1].substring(0, descriptionAndBy[1].length()-1);
+                Deadline item = new Deadline(descriptionAndBy[0], descriptionAndBy[1]);
+                tasks.add(item);
+            }
+        }
+    }
+
 
     public static Scanner startFile(File file) {
         try {
@@ -42,8 +66,8 @@ public class Duke {
         } catch (IOException e){
             System.out.println("An error occurred.");
             e.printStackTrace();
+            return null;
         }
-        return null;
     }
 
 
@@ -89,7 +113,7 @@ public class Duke {
         if (numberOfTasks==1) {
             System.out.print(" task");
         } else {
-            System.out.print("duke");
+            System.out.print(" tasks");
         }
         System.out.println(" in the list.");
     }
@@ -186,8 +210,8 @@ public class Duke {
     public static void addEvent(String input, ArrayList<Task> tasks) {
         try {
             String task = input.substring(6);
-            String[] descriptionAndBy = task.split(" /at ");
-            Event item = new Event(descriptionAndBy[0], descriptionAndBy[1]);
+            String[] descriptionAndAt = task.split(" /at ");
+            Event item = new Event(descriptionAndAt[0], descriptionAndAt[1]);
             tasks.add(item);
             printAdded(item,tasks.size());
         } catch (StringIndexOutOfBoundsException | ArrayIndexOutOfBoundsException e) {
