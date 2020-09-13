@@ -4,6 +4,5 @@ Here is the collated list of your tasks:
 (3) 𝕋 ✓ alibaba chickenman
 (4) 𝕋 ✓ blah blah
 (5) 𝔼 ✓ dslkfjw (at: fjdklsfjwe)
-(6) 𝔻 ✓ fldskjew (by: fjdkslfw)
-(7) 𝕋 ✓ meow meow meow
-(8) 𝔼 ✘ fljdf (at: sldkfj)
+(6) 𝕋 ✓ meow meow meow
+(7) 𝔼 ✘ fljdf (at: sldkfj)
