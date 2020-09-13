@@ -8,16 +8,20 @@ import duke.tasks.Event;
 import duke.tasks.Task;
 import duke.tasks.ToDo;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Duke {
 
     public static void main(String[] args) {
+        State state = State.running;
+        File file = new File("duke.txt");
+        Scanner readFile = startFile(file);
         Scanner in = new Scanner(System.in);
         Messages.initialiseJulia();
         ArrayList<Task> tasks = new ArrayList<>();
-        State state = State.running;
         while (state == State.running) {
             String input = in.nextLine();
             Messages.printLine();
@@ -25,6 +29,24 @@ public class Duke {
             Messages.printLine();
         }
     }
+
+    public static Scanner startFile(File file) {
+        try {
+            if (file.createNewFile()){
+                System.out.println("I can't find a file in your directory :(");
+                System.out.println("I created a file for you here!\n" + "File location: " + file.getAbsolutePath());
+            } else if (!file.createNewFile()) {
+                System.out.println("I found a file in your directory!\nSetting up file over here...");
+            }
+            return new Scanner(file);
+        } catch (IOException e){
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
 
     /**
      * Analyses the input given by user and determines the following action
