@@ -46,6 +46,12 @@ public class Messages {
         System.out.println("\"deadline Math homework /by end of this week\"");
     }
 
+    public static void printDeleteIncorrectFormat() {
+        System.out.println("Incorrect format for delete, please try again!");
+        System.out.println("Here is an example on how you can use the delete command: ");
+        System.out.println("\"delete 3\"");
+    }
+
     public static void printInvalidInput() {
         System.out.println("Oh no, so sorry but I cannot understand that :(");
         System.out.println("Try using \"todo\", \"event\" or \"deadline\" to add tasks!");

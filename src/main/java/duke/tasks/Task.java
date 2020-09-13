@@ -19,6 +19,17 @@ public class Task {
         System.out.println(this);
     }
 
+    public void delete(int newNumberOfTasks) {
+        System.out.println("Okay, I've removed this task: ");
+        System.out.println(this);
+        System.out.print("Now you have " + newNumberOfTasks);
+        if (newNumberOfTasks == 1){
+            System.out.println(" task in the list.");
+        } else {
+            System.out.println(" tasks in the list.");
+        }
+    }
+
     public String toString(){
         return getStatusIcon() + " " + description;
     }
