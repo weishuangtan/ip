@@ -1,8 +1,4 @@
 Here is the collated list of your tasks:
 (1) 𝕋 ✓ CS2113T notes today
-(2) 𝔼 ✘ CSC elections (at: Sunday 5pm)
-(3) 𝕋 ✓ alibaba chickenman
-(4) 𝕋 ✓ blah blah
-(5) 𝔼 ✓ dslkfjw (at: fjdklsfjwe)
-(6) 𝕋 ✓ meow meow meow
-(7) 𝔼 ✘ fljdf (at: sldkfj)
+(2) 𝕋 ✓ alibaba chickenman
+(3) 𝔼 ✘ fljdf (at: sldkfj)
