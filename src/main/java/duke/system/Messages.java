@@ -1,5 +1,7 @@
 package duke.system;
 
+import duke.tasks.Task;
+
 public class Messages {
 
     /**
@@ -77,4 +79,20 @@ public class Messages {
         System.out.println("Goodbye! I look forward to seeing you the next time!");
     }
 
+    /**
+     * Prints message when task has been added
+     *
+     * @param item task description
+     * @param numberOfTasks number of tasks in the current list
+     */
+    public static void printAdded(Task item, int numberOfTasks) {
+        System.out.println("Okay, I have added the following into the list for you!\n" + "-> " + item);
+        System.out.print("Now you have " + numberOfTasks);
+        if (numberOfTasks == 1) {
+            System.out.print(" task");
+        } else {
+            System.out.print(" tasks");
+        }
+        System.out.println(" in the list.");
+    }
 }
