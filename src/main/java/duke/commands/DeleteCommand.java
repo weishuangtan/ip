@@ -9,12 +9,15 @@ import duke.tasks.Task;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Deletes a task from the list
+ */
 public class DeleteCommand extends Command {
     public DeleteCommand(String input, ArrayList<Task> tasks, State state) {
         super(input, tasks, state);
     }
 
-    public  void execute(){
+    public  void execute() {
         String[] words = input.split(" ");
 
         try {
@@ -26,7 +29,7 @@ public class DeleteCommand extends Command {
             } else {
                 throw new DukeException();
             }
-        } catch (DukeException e){
+        } catch (DukeException e) {
             Ui.printNotFound();
         } catch (NumberFormatException | IndexOutOfBoundsException e) {
             Ui.printDeleteIncorrectFormat();

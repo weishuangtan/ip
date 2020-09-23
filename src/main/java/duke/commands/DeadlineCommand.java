@@ -12,8 +12,10 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 
+/**
+ * Adds a Deadline type task into the list of tasks
+ */
 public class DeadlineCommand extends Command{
-
 
     public DeadlineCommand(String input, ArrayList<Task> tasks, State state) {
         super(input, tasks, state);
@@ -31,7 +33,7 @@ public class DeadlineCommand extends Command{
             tasks.add(item);
             Ui.printAdded(item,tasks.size());
             Storage.writeToFile(tasks);
-        }  catch (IndexOutOfBoundsException e ) {
+        }  catch (IndexOutOfBoundsException e) {
             Ui.printDeadlineIncorrectFormat();
         } catch (IOException e) {
             System.out.println("Something went wrong: " + e.getMessage());

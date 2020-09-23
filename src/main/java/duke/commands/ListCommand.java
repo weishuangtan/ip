@@ -5,14 +5,14 @@ import duke.tasks.Task;
 
 import java.util.ArrayList;
 
+/**
+ * Prints the current collated list based on user inputs
+ */
 public class ListCommand extends Command {
     public ListCommand(String input, ArrayList<Task> tasks, State state) {
         super(input, tasks, state);
     }
 
-    /**
-     * Prints the current collated list based on user inputs
-     */
     public void execute () {
         if (tasks.size() == 0) {
             System.out.println("Looks like you have no task yet!");

@@ -12,14 +12,14 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 
+/**
+ * Adds an Event type task into the list
+ */
 public class EventCommand extends Command {
     public EventCommand(String input, ArrayList<Task> tasks, State state) {
         super(input, tasks, state);
     }
 
-    /**
-     * Adds Tasks.Event task into the list of tasks
-     */
     public void execute() {
         try {
             LocalDate date = findDate();
