@@ -2,6 +2,9 @@ package duke.system;
 
 import duke.tasks.Task;
 
+/**
+ * Text UI of the application
+ */
 public class Ui {
 
     /**
@@ -24,36 +27,54 @@ public class Ui {
         Ui.printLine();
     }
 
+    /**
+     * Prints the message when To Do command is in incorrect format
+     */
     public static void printToDoIncorrectFormat() {
         System.out.println("Incorrect format for todo, please try again!");
         System.out.println("Here is an example on how you can add a todo task into the list: ");
         System.out.println("\"todo Tutorials for this week\"");
     }
 
+    /**
+     * Prints the message when done command is in incorrect format
+     */
     public static void printDoneIncorrectFormat() {
         System.out.println("Incorrect format for done, please try again!");
         System.out.println("Here is an example on how you can use the done command: ");
         System.out.println("\"done 3\"");
     }
 
+    /**
+     * Prints the message when event command is in incorrect format
+     */
     public static void printEventIncorrectFormat() {
         System.out.println("Incorrect format for event, please try again!");
         System.out.println("Here is an example on how you can add an event task into the list: ");
         System.out.println("\"event Tutorial class /at 10:00AM\"");
     }
 
+    /**
+     * Prints the message when deadline command is in incorrect format
+     */
     public static void printDeadlineIncorrectFormat() {
         System.out.println("Incorrect format for deadline, please try again!");
         System.out.println("Here is an example on how you can add a deadline task into the list: ");
         System.out.println("\"deadline Math homework /by end of this week\"");
     }
 
+    /**
+     * Prints the message when delete command is in incorrect format
+     */
     public static void printDeleteIncorrectFormat() {
         System.out.println("Incorrect format for delete, please try again!");
         System.out.println("Here is an example on how you can use the delete command: ");
         System.out.println("\"delete 3\"");
     }
 
+    /**
+     * Prints the message when the input is invalid
+     */
     public static void printInvalidInput() {
         System.out.println("Oh no, so sorry but I cannot understand that :(");
         System.out.println("Try using \"todo\", \"event\" or \"deadline\" to add tasks!");
@@ -61,6 +82,9 @@ public class Ui {
         System.out.println("use \"list\" to list out all your existing tasks!");
     }
 
+    /**
+     * Prints the message when unable to find a task to check as done
+     */
     public static void printNotFound() {
         System.out.println("No such task found, try again?");
     }

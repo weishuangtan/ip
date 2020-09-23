@@ -9,8 +9,10 @@ import duke.tasks.Task;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Adds a Deadline type task into the list of tasks
+ */
 public class DeadlineCommand extends Command{
-
 
     public DeadlineCommand(String input, ArrayList<Task> tasks, State state) {
         super(input, tasks, state);
@@ -20,12 +22,11 @@ public class DeadlineCommand extends Command{
         try {
             String task = input.substring(9);
             String[] descriptionAndBy = task.split(" /by ");
-
             Deadline item = new Deadline(descriptionAndBy[0], descriptionAndBy[1]);
             tasks.add(item);
             Ui.printAdded(item,tasks.size());
             Storage.writeToFile(tasks);
-        }  catch (IndexOutOfBoundsException e ) {
+        }  catch (IndexOutOfBoundsException e) {
             Ui.printDeadlineIncorrectFormat();
         } catch (IOException e) {
             System.out.println("Something went wrong: " + e.getMessage());

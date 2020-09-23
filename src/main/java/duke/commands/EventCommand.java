@@ -9,14 +9,14 @@ import duke.tasks.Task;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Adds an Event type task into the list
+ */
 public class EventCommand extends Command {
     public EventCommand(String input, ArrayList<Task> tasks, State state) {
         super(input, tasks, state);
     }
 
-    /**
-     * Adds Tasks.Event task into the list of tasks
-     */
     public void execute() {
         try {
             String task = input.substring(6);

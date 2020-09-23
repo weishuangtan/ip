@@ -6,6 +6,9 @@ import duke.tasks.Task;
 
 import java.util.ArrayList;
 
+/**
+ * Parses user's input
+ */
 public class Parser {
     /**
      * Analyses the input given by user and determines the following action
@@ -27,7 +30,7 @@ public class Parser {
             return new DeadlineCommand(input, tasks, state);
         } else if (input.startsWith("event")) {
             return new EventCommand(input, tasks, state);
-        } else if (input.startsWith("delete")){
+        } else if (input.startsWith("delete")) {
             return new DeleteCommand(input, tasks, state);
         } else {
             return new IncorrectCommand(input, tasks, state);

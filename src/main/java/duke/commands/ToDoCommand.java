@@ -10,14 +10,15 @@ import duke.tasks.ToDo;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Adds a To Do type task into the list
+ */
 public class ToDoCommand extends Command{
     public ToDoCommand(String input, ArrayList<Task> tasks, State state) {
         super(input, tasks, state);
     }
 
-    /**
-     * Adds To Do task into the list of tasks
-     */
+
     public void execute() {
         try {
             String[] words = input.split(" ");
@@ -30,7 +31,7 @@ public class ToDoCommand extends Command{
             } else {
                 throw new DukeException();
             }
-        } catch (DukeException e){
+        } catch (DukeException e) {
             Ui.printToDoIncorrectFormat();
         } catch (IOException e) {
             System.out.println("Something went wrong: " + e.getMessage());

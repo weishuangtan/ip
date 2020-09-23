@@ -9,14 +9,14 @@ import duke.tasks.Task;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Marks a task in the list as done
+ */
 public class DoneCommand extends Command{
     public DoneCommand(String input, ArrayList<Task> tasks, State state) {
         super(input, tasks, state);
     }
 
-    /**
-     * Tries checking given task off the list
-     */
     public  void execute() {
         String[] words = input.split(" ");
 
@@ -28,7 +28,7 @@ public class DoneCommand extends Command{
             } else {
                 throw new DukeException();
             }
-        } catch (DukeException e){
+        } catch (DukeException e) {
             Ui.printNotFound();
         } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
             Ui.printDoneIncorrectFormat();
