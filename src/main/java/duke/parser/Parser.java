@@ -31,6 +31,8 @@ public class Parser {
             return new DeleteCommand(input, tasks, state);
         } else if (input.startsWith("find")) {
             return new FindCommand(input, tasks, state);
+        } else if (input.startsWith("dates")) {
+            return new DatesCommand(input, tasks, state);
         } else {
             return new IncorrectCommand(input, tasks, state);
         }
