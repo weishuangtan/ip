@@ -1,7 +1,7 @@
 package duke.commands;
 
-import duke.parser.FileHandler;
-import duke.system.Messages;
+import duke.system.Storage;
+import duke.system.Ui;
 import duke.system.State;
 import duke.tasks.Event;
 import duke.tasks.Task;
@@ -23,10 +23,10 @@ public class EventCommand extends Command {
             String[] descriptionAndAt = task.split(" /at ");
             Event item = new Event(descriptionAndAt[0], descriptionAndAt[1]);
             tasks.add(item);
-            Messages.printAdded(item,tasks.size());
-            FileHandler.writeToFile(tasks);
+            Ui.printAdded(item,tasks.size());
+            Storage.writeToFile(tasks);
         } catch (IndexOutOfBoundsException e) {
-            Messages.printEventIncorrectFormat();
+            Ui.printEventIncorrectFormat();
         } catch (IOException e) {
             System.out.println("Something went wrong: " + e.getMessage());
         }

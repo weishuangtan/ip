@@ -2,7 +2,7 @@ package duke.system;
 
 import duke.tasks.Task;
 
-public class Messages {
+public class Ui {
 
     /**
      * Prints starting page of Julia the chat bot
@@ -19,9 +19,9 @@ public class Messages {
                 + "               <|_____________|\n";
         String EMOJI = "      \\(\uFF61\u25D5\u203F\u25D5\uFF61)/";
         System.out.println(LOGO + TEXT_BOX + EMOJI);
-        Messages.printLine();
+        Ui.printLine();
         System.out.println("Hello! I'm Julia\nIs there anything I can do for you today?");
-        Messages.printLine();
+        Ui.printLine();
     }
 
     public static void printToDoIncorrectFormat() {

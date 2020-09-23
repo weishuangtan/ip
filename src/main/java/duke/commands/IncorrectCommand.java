@@ -1,6 +1,6 @@
 package duke.commands;
 
-import duke.system.Messages;
+import duke.system.Ui;
 import duke.system.State;
 import duke.tasks.Task;
 
@@ -12,6 +12,6 @@ public class IncorrectCommand extends Command {
     }
 
     public void execute (){
-        Messages.printInvalidInput();
+        Ui.printInvalidInput();
     }
 }

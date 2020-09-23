@@ -1,4 +1,4 @@
-package duke.parser;
+package duke.system;
 
 import duke.tasks.Deadline;
 import duke.tasks.Event;
@@ -11,12 +11,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class FileHandler {
+public class Storage {
     public static void setup(ArrayList<Task> tasks) {
         File file = new File("duke.txt");
-        Scanner readFile = FileHandler.startFile(file);
+        Scanner readFile = Storage.startFile(file);
         assert readFile != null;
-        FileHandler.loadList(readFile,tasks);
+        Storage.loadList(readFile,tasks);
     }
 
     public static Scanner startFile(File file) {

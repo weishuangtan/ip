@@ -1,9 +1,9 @@
 package duke;
 
 import duke.commands.Command;
-import duke.parser.FileHandler;
+import duke.system.Storage;
 import duke.parser.Parser;
-import duke.system.Messages;
+import duke.system.Ui;
 import duke.system.State;
 import duke.tasks.Task;
 
@@ -16,14 +16,14 @@ public class Duke {
         State state = new State();
         Scanner in = new Scanner(System.in);
         ArrayList<Task> tasks = new ArrayList<>();
-        FileHandler.setup(tasks);
-        Messages.initialiseJulia();
+        Storage.setup(tasks);
+        Ui.initialiseJulia();
         while (state.getState()) {
             String input = in.nextLine();
-            Messages.printLine();
+            Ui.printLine();
             Command command = Parser.analyseCommand(input,tasks,state);
             command.execute();
-            Messages.printLine();
+            Ui.printLine();
         }
     }
 

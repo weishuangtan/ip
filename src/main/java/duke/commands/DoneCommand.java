@@ -1,8 +1,8 @@
 package duke.commands;
 
-import duke.parser.FileHandler;
+import duke.system.Storage;
 import duke.system.DukeException;
-import duke.system.Messages;
+import duke.system.Ui;
 import duke.system.State;
 import duke.tasks.Task;
 
@@ -24,14 +24,14 @@ public class DoneCommand extends Command{
             int complete = Integer.parseInt(words[1]);
             if (complete <= tasks.size()) {
                 tasks.get(complete - 1).markAsDone();
-                FileHandler.writeToFile(tasks);
+                Storage.writeToFile(tasks);
             } else {
                 throw new DukeException();
             }
         } catch (DukeException e){
-            Messages.printNotFound();
+            Ui.printNotFound();
         } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
-            Messages.printDoneIncorrectFormat();
+            Ui.printDoneIncorrectFormat();
         } catch (IOException e) {
             System.out.println("Something went wrong: " + e.getMessage());
         }

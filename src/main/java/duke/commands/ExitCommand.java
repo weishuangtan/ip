@@ -1,6 +1,6 @@
 package duke.commands;
 
-import duke.system.Messages;
+import duke.system.Ui;
 import duke.system.State;
 import duke.tasks.Task;
 
@@ -12,7 +12,7 @@ public class ExitCommand extends Command {
     }
 
     public void execute (){
-        Messages.printGoodbye();
+        Ui.printGoodbye();
         state.exit();
     }
 }

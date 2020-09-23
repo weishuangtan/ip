@@ -1,7 +1,7 @@
 package duke.commands;
 
-import duke.parser.FileHandler;
-import duke.system.Messages;
+import duke.system.Storage;
+import duke.system.Ui;
 import duke.system.State;
 import duke.tasks.Deadline;
 import duke.tasks.Task;
@@ -23,10 +23,10 @@ public class DeadlineCommand extends Command{
 
             Deadline item = new Deadline(descriptionAndBy[0], descriptionAndBy[1]);
             tasks.add(item);
-            Messages.printAdded(item,tasks.size());
-            FileHandler.writeToFile(tasks);
+            Ui.printAdded(item,tasks.size());
+            Storage.writeToFile(tasks);
         }  catch (IndexOutOfBoundsException e ) {
-            Messages.printDeadlineIncorrectFormat();
+            Ui.printDeadlineIncorrectFormat();
         } catch (IOException e) {
             System.out.println("Something went wrong: " + e.getMessage());
         }

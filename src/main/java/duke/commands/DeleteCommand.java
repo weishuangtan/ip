@@ -1,8 +1,8 @@
 package duke.commands;
 
-import duke.parser.FileHandler;
+import duke.system.Storage;
 import duke.system.DukeException;
-import duke.system.Messages;
+import duke.system.Ui;
 import duke.system.State;
 import duke.tasks.Task;
 
@@ -22,14 +22,14 @@ public class DeleteCommand extends Command {
             if (delete <= tasks.size()) {
                 tasks.get(delete-1).delete(tasks.size()-1);
                 tasks.remove(delete-1);
-                FileHandler.writeToFile(tasks);
+                Storage.writeToFile(tasks);
             } else {
                 throw new DukeException();
             }
         } catch (DukeException e){
-            Messages.printNotFound();
+            Ui.printNotFound();
         } catch (NumberFormatException | IndexOutOfBoundsException e) {
-            Messages.printDeleteIncorrectFormat();
+            Ui.printDeleteIncorrectFormat();
         } catch (IOException e) {
             System.out.println("Something went wrong: " + e.getMessage());
         }

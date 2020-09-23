@@ -1,8 +1,8 @@
 package duke.commands;
 
-import duke.parser.FileHandler;
+import duke.system.Storage;
 import duke.system.DukeException;
-import duke.system.Messages;
+import duke.system.Ui;
 import duke.system.State;
 import duke.tasks.Task;
 import duke.tasks.ToDo;
@@ -25,13 +25,13 @@ public class ToDoCommand extends Command{
                 String task = input.substring(5);
                 ToDo item = new ToDo(task);
                 tasks.add(item);
-                Messages.printAdded(item, tasks.size());
-                FileHandler.writeToFile(tasks);
+                Ui.printAdded(item, tasks.size());
+                Storage.writeToFile(tasks);
             } else {
                 throw new DukeException();
             }
         } catch (DukeException e){
-            Messages.printToDoIncorrectFormat();
+            Ui.printToDoIncorrectFormat();
         } catch (IOException e) {
             System.out.println("Something went wrong: " + e.getMessage());
         }
