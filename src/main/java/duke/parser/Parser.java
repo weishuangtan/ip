@@ -29,6 +29,8 @@ public class Parser {
             return new EventCommand(input, tasks, state);
         } else if (input.startsWith("delete")){
             return new DeleteCommand(input, tasks, state);
+        } else if (input.startsWith("dates")) {
+            return new DatesCommand(input, tasks, state);
         } else {
             return new IncorrectCommand(input, tasks, state);
         }

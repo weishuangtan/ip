@@ -25,6 +25,9 @@ public class DeadlineCommand extends Command{
             String task = input.substring(9);
             String[] descriptionAndBy = task.split(" /by ");
             Deadline item = new Deadline(descriptionAndBy[0], descriptionAndBy[1], date);
+            if (date != null) {
+                item.hasDate();
+            }
             tasks.add(item);
             Ui.printAdded(item,tasks.size());
             Storage.writeToFile(tasks);

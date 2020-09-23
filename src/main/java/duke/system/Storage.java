@@ -52,7 +52,11 @@ public class Storage {
                 String taskLine = line.substring((line.indexOf("\uD835\uDD3C") + 5));
                 String[] descriptionAndAt = taskLine.split(" \\(at: ");
                 descriptionAndAt[1] = descriptionAndAt[1].substring(0, descriptionAndAt[1].length()-1);
+                LocalDate date = findDate(taskLine);
                 Event item = new Event(descriptionAndAt[0], descriptionAndAt[1],findDate(taskLine));
+                if (date != null) {
+                    item.hasDate();
+                }
                 if (line.contains("\u2713")) {
                     item.isDone();
                 }
@@ -61,7 +65,11 @@ public class Storage {
                 String taskLine = line.substring((line.indexOf("\uD835\uDD3B") + 5));
                 String[] descriptionAndBy = taskLine.split(" \\(by: ");
                 descriptionAndBy[1] = descriptionAndBy[1].substring(0, descriptionAndBy[1].length()-1);
-                Deadline item = new Deadline(descriptionAndBy[0], descriptionAndBy[1], findDate(taskLine));
+                LocalDate date = findDate(taskLine);
+                Deadline item = new Deadline(descriptionAndBy[0], descriptionAndBy[1], date);
+                if (date != null) {
+                    item.hasDate();
+                }
                 if (line.contains("\u2713")) {
                     item.isDone();
                 }
@@ -86,7 +94,7 @@ public class Storage {
         for (int i = 0; i < words.length; i++) {
             try {
                 return LocalDate.parse(String.format("%s %s %s", words[i], words[i + 1], words[i + 2]),
-                        DateTimeFormatter.ofPattern("MMM dd yyyy"));
+                        DateTimeFormatter.ofPattern("MMM dd yyyy)"));
             } catch (DateTimeParseException | ArrayIndexOutOfBoundsException ignored) {
             }
         }

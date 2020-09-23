@@ -56,9 +56,6 @@ public class Ui {
 
     public static void printInvalidInput() {
         System.out.println("Oh no, so sorry but I cannot understand that :(");
-        System.out.println("Try using \"todo\", \"event\" or \"deadline\" to add tasks!");
-        System.out.println("You can also use \"done\" to mark your tasks as done, or");
-        System.out.println("use \"list\" to list out all your existing tasks!");
     }
 
     public static void printNotFound() {

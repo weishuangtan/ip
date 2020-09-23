@@ -26,6 +26,9 @@ public class EventCommand extends Command {
             String task = input.substring(6);
             String[] descriptionAndAt = task.split(" /at ");
             Event item = new Event(descriptionAndAt[0], descriptionAndAt[1], date);
+            if (date != null) {
+                item.hasDate();
+            }
             tasks.add(item);
             Ui.printAdded(item,tasks.size());
             Storage.writeToFile(tasks);
