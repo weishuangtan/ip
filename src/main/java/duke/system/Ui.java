@@ -84,6 +84,7 @@ public class Ui {
 
     public static void printInvalidInput() {
         System.out.println("Oh no, so sorry but I cannot understand that :(");
+        System.out.println("Type \"help\" to view the list of commands!");
     }
 
     /**
