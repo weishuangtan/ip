@@ -1,5 +1,10 @@
 package duke.tasks;
 
+
+
+
+import java.time.LocalDate;
+
 /**
  * Represents an Event Task in the task list
  */
@@ -13,7 +18,8 @@ public class Event extends Task {
      * @param description describes the task
      * @param at when the task is
      */
-    public Event(String description, String at) {
+
+    public Event(String description, String at, LocalDate date) {
         super(description);
         this.at = at;
     }
@@ -27,4 +33,5 @@ public class Event extends Task {
     public String toString() {
         return "\uD835\uDD3C " + super.toString() + " (at: " + at + ")";
     }
+
 }

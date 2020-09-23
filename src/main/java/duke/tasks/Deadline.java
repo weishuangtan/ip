@@ -1,5 +1,9 @@
 package duke.tasks;
 
+
+
+import java.time.LocalDate;
+
 /**
  * Represents a Deadline Task in the task list
  */
@@ -13,7 +17,7 @@ public class Deadline extends Task {
      * @param description describes the task
      * @param by deadline of task
      */
-    public Deadline(String description, String by) {
+    public Deadline(String description, String by, LocalDate date) {
         super(description);
         this.by = by;
     }
@@ -27,4 +31,5 @@ public class Deadline extends Task {
     public String toString() {
         return "\uD835\uDD3B " + super.toString() + " (by: " + by + ")";
     }
+
 }

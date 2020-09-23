@@ -75,11 +75,15 @@ public class Ui {
     /**
      * Prints the message when the input is invalid
      */
+    public static void printFindIncorrectFormat() {
+        System.out.println("Incorrect format for find, please try again!");
+        System.out.println("Here is an example on how you can use the find command: ");
+        System.out.println("\"find homework\"");
+    }
+
+
     public static void printInvalidInput() {
         System.out.println("Oh no, so sorry but I cannot understand that :(");
-        System.out.println("Try using \"todo\", \"event\" or \"deadline\" to add tasks!");
-        System.out.println("You can also use \"done\" to mark your tasks as done, or");
-        System.out.println("use \"list\" to list out all your existing tasks!");
     }
 
     /**

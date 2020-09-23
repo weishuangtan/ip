@@ -3,10 +3,13 @@ package duke.tasks;
 public class Task {
     protected String description;
     protected boolean isDone;
+    protected boolean hasDate;
+
 
     public Task(String description) {
         this.description = description;
         this.isDone = false;
+        this.hasDate = false;
     }
 
     public String getStatusIcon() {
@@ -38,6 +41,16 @@ public class Task {
     public String toString() {
         return getStatusIcon() + " " + description;
     }
+
+    public void hasDate(){
+        this.hasDate = true;
+    }
+
+    public boolean dateAvailable(){
+        return hasDate;
+    }
+
+
 
 }
 
