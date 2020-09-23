@@ -54,6 +54,12 @@ public class Ui {
         System.out.println("\"delete 3\"");
     }
 
+    public static void printFindIncorrectFormat() {
+        System.out.println("Incorrect format for find, please try again!");
+        System.out.println("Here is an example on how you can use the find command: ");
+        System.out.println("\"find homework\"");
+    }
+
     public static void printInvalidInput() {
         System.out.println("Oh no, so sorry but I cannot understand that :(");
     }
