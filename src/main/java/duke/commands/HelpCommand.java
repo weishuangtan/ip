@@ -30,6 +30,5 @@ public class HelpCommand extends Command {
         System.out.println("[delete]      to delete a task from the list");
         System.out.println("[find]        to find tasks with matching keyword in the list");
         System.out.println("[dates]       to view tasks with dates attached to it");
-        System.out.println("[bye]         to exit the chat bot");
     }
 }
