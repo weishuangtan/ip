@@ -61,15 +61,15 @@ public class Storage {
     public static void loadList(Scanner readFile, ArrayList<Task> tasks) {
         while(readFile.hasNext()) {
             String line = readFile.nextLine();
-            if (line.contains("\uD835\uDD4B")) { //To Do
-                String taskLine = line.substring((line.indexOf("\uD835\uDD4B") + 5));
+            if (line.contains("\u24c9")) { //To Do
+                String taskLine = line.substring((line.indexOf("\u24c9") + 5));
                 ToDo item = new ToDo(taskLine);
                 if (line.contains("\u2713")) {
                     item.isDone();
                 }
                 tasks.add(item);
-            } else if (line.contains("\uD835\uDD3C")) { //Event
-                String taskLine = line.substring((line.indexOf("\uD835\uDD3C") + 5));
+            } else if (line.contains("\u24ba")) { //Event
+                String taskLine = line.substring((line.indexOf("\u24ba") + 5));
                 String[] descriptionAndAt = taskLine.split(" \\(at: ");
                 descriptionAndAt[1] = descriptionAndAt[1].substring(0, descriptionAndAt[1].length()-1);
                 LocalDate date = findDate(taskLine);
@@ -81,8 +81,8 @@ public class Storage {
                     item.isDone();
                 }
                 tasks.add(item);
-            } else if (line.contains("\uD835\uDD3B")) { //Deadline
-                String taskLine = line.substring((line.indexOf("\uD835\uDD3B") + 5));
+            } else if (line.contains("\u24b9")) { //Deadline
+                String taskLine = line.substring((line.indexOf("\u24b9") + 5));
                 String[] descriptionAndBy = taskLine.split(" \\(by: ");
                 descriptionAndBy[1] = descriptionAndBy[1].substring(0, descriptionAndBy[1].length()-1);
                 LocalDate date = findDate(taskLine);

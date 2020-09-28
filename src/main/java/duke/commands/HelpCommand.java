@@ -22,14 +22,15 @@ public class HelpCommand extends Command {
 
     public void execute() {
         System.out.println("Here is the list of commands that you can use: ");
+        System.out.println("[bye]         to exit the chat bot");
+        System.out.println("[dates]       to view tasks with dates attached to it");
+        System.out.println("[deadline]    to add a deadline type task");
+        System.out.println("[delete]      to delete a task from the list");
+        System.out.println("[done]        to mark off a task as done from the list");
+        System.out.println("[event]       to add an event type task");
+        System.out.println("[find]        to find tasks with matching keyword in the list");
         System.out.println("[help]        to list commands available for use");
         System.out.println("[list]        to view the list of tasks");
         System.out.println("[todo]        to add a todo type task");
-        System.out.println("[event]       to add an event type task");
-        System.out.println("[deadline]    to add a deadline type task");
-        System.out.println("[delete]      to delete a task from the list");
-        System.out.println("[find]        to find tasks with matching keyword in the list");
-        System.out.println("[dates]       to view tasks with dates attached to it");
-        System.out.println("[bye]         to exit the chat bot");
     }
 }

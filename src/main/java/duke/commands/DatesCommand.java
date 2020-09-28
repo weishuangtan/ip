@@ -15,18 +15,24 @@ public class DatesCommand extends Command {
     }
 
     public void execute() {
+        boolean hasDates = false;
 
-        if (tasks.size() == 0) {
-            System.out.println("Looks like you have no tasks with dates yet!");
-        } else {
-            System.out.println("Here is the collated list of your tasks with dates:");
-            int i = 0;
-            for (Task task : tasks) {
-                if (task.dateAvailable()) {
-                    System.out.println("(" + (i + 1) + ") " + task);
+        int i = 0;
+        int j = 0;
+        for (Task task : tasks) {
+            if (task.dateAvailable()) {
+                hasDates = true;
+                if (j == 0) {
+                    System.out.println("Here is the collated list of your tasks with dates:");
                 }
-                i++;
+                System.out.println("(" + (i + 1) + ") " + task);
+                j++;
             }
+            i++;
+        }
+
+        if (!hasDates) {
+            System.out.println("Looks like you have no tasks with dates yet!");
         }
         System.out.println("Feel free to continue adding to the list! :)");
     }
