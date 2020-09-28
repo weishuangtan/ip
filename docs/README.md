@@ -24,7 +24,7 @@ use via a Command Line Interface** (CLI)
 
 ## Quick Start
 1. Ensure that you have Java `11` or above installed in your Computer.
-2. Download the latest `julia.jar` here.
+2. Download the latest `julia.jar` [here](https://github.com/weishuangtan/ip/releases/tag/A-Release).
 3. Save the file to your desired folder.
 4. Open the Command Prompt in that folder.
 5. Run `chcp 65001` to change the active code page.
@@ -298,6 +298,7 @@ ____________________________________________________________
 
 ## FAQ
 **Q:** Can I transfer my data to another Computer?
+
 **A:** Yes. Simply set up `julia.jar` on your other device and copy over the
 `duke.txt` file in the same home folder.
 
