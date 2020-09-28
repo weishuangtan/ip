@@ -5,6 +5,9 @@ import duke.tasks.Task;
 
 import java.util.ArrayList;
 
+/**
+ * Lists tasks that has date attached to it
+ */
 public class DatesCommand extends Command {
 
     public DatesCommand(String input, ArrayList<Task> tasks, State state) {

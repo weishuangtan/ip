@@ -6,6 +6,9 @@ import duke.tasks.Task;
 
 import java.util.ArrayList;
 
+/**
+ * Finds tasks with the keyword user has input
+ */
 public class FindCommand extends Command {
     public FindCommand(String input, ArrayList<Task> tasks, State state) {
         super(input, tasks, state);

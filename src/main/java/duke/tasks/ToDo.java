@@ -21,7 +21,7 @@ public class ToDo extends Task {
      */
     @Override
     public String toString() {
-        return "\uD835\uDD4B " + super.toString();
+        return "\u24c9 " + super.toString();
     }
 
 }

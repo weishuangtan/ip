@@ -31,7 +31,7 @@ public class Event extends Task {
      */
     @Override
     public String toString() {
-        return "\uD835\uDD3C " + super.toString() + " (at: " + at + ")";
+        return "\u24ba " + super.toString() + " (at: " + at + ")";
     }
 
 }

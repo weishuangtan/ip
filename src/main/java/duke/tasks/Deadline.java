@@ -29,7 +29,7 @@ public class Deadline extends Task {
      */
     @Override
     public String toString() {
-        return "\uD835\uDD3B " + super.toString() + " (by: " + by + ")";
+        return "\u24b9 " + super.toString() + " (by: " + by + ")";
     }
 
 }
