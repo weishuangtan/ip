@@ -10,21 +10,88 @@ use via a Command Line Interface** (CLI)
 6. Right click the top bar in your Command Prompt and click `properties`
 7. Click the `Fonts` tab and change the font to `NSimSun`.
 8. Run `java -Dfile.encoding=UTF-8 -jar julia.jar` to start Julia the chat bot.
+9. Type the command in the command line and press Enter to execute it. e.g. typing `help` and pressing Enter will 
+display a list of commands that you can use.
+10. Refer to the Features below for details of each command.
 
-### Feature 1 
-Description of feature.
+## Features Overview
+**Notes about the command format**
+* Words in `UPPER_CASE` are the parameters to be supplied by user.
+e.g. in `deadline TASK_NAME \by DEADLINE`, `TASK_NAME` and `DEADLINE` are parameters which can be used as `deadline Tutorial \by
+tomorrow`.
+* Commands are all case-sensitive and have to be in lower case.
+* There are 3 different categories of commands for Julia the chat bot as follows:
 
-## Usage
+Basic Commands | Adding Tasks | List Navigation 
+------------ | ------------- | -------------
+`help` | `todo` | `list`
+`bye` | `event` | `dates` 
+- | `deadline` | `find`
+- | - | `delete`
 
-### `Keyword` - Describe action
+## Basic Commands
 
-Describe action and its outcome.
+### Viewing help - `help`
+
+Displays a list of commands that user can use for Julia the chat bot.
+
+Format: `help`
 
 Example of usage: 
 
-`keyword (optional arguments)`
+`help`
 
 Expected outcome:
 
-`outcome`
+```
+____________________________________________________________
+Here is the list of commands that you can use: 
+[help]        to list commands available for use
+[list]        to view the list of tasks
+[todo]        to add a todo type task
+[event]       to add an event type task
+[deadline]    to add a deadline type task
+[delete]      to delete a task from the list
+[find]        to find tasks with matching keyword in the list
+[dates]       to view tasks with dates attached to it
+[bye]         to exit the chat bot
+____________________________________________________________
+```
+### Exiting the programme - `bye`
+
+Exits Julia the chat bot program.
+
+Format: `bye`
+
+Example of usage: 
+
+`bye`
+
+Expected outcome:
+```
+____________________________________________________________
+Goodbye! I look forward to seeing you the next time!
+____________________________________________________________
+```
+
+## Adding tasks
+
+### Adding todo task - `todo`
+
+Adds a new todo type task to the list.
+
+Format: `todo TASK_NAME`
+
+Example of usage: 
+
+`todo Tutorials for this week`
+
+Expected outcome:
+
+```
+Okay, I have added the following into the list for you!
+-> Ⓣ ✘ Tutorials for this week
+Now you have 1 task in the list.
+```
+
 
