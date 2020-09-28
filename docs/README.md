@@ -1,7 +1,27 @@
 # User Guide
 Julia is an **interactive chat bot** that is able to help you manage and store your daily tasks, **optimised for
 use via a Command Line Interface** (CLI)
-___
+
+* [Quick Start](#quick-start)
+* [Features Overview](#features-overview)
+* [Basic Commands](#basic-commands)
+    * [Viewing help - `help`](#viewing-help---help)
+    * [Exiting the programme - `bye`](#exiting-the-programme---bye)
+* [Adding tasks](#adding-tasks)
+    * [Adding todo task - `todo`](#adding-todo-task---todo)
+    * [Adding event task - `event`](#adding-event-task---event)
+    * [Adding deadline task - `deadline`](#adding-deadline-task---deadline)
+* [List Navigation](#list-navigation)
+    * [Displaying task list - `list`](#displaying-task-list---list)
+    * [Displaying tasks with dates attached - `dates`](#displaying-tasks-with-dates-attached---dates)
+    * [Finding tasks using keyword - `find`](#finding-tasks-using-keyword---find)
+    * [Marking task as done - `done`](#marking-task-as-done---done)
+    * [Deleting a task from the list - `delete`](#deleting-a-task-from-the-list---delete)
+* [FAQ](#faq)
+* [Command Summary](#command-summary)
+
+
+
 ## Quick Start
 1. Ensure that you have Java `11` or above installed in your Computer.
 2. Download the latest `julia.jar` here.
@@ -16,7 +36,7 @@ display a list of commands that you can use.
 10. Refer to the Features below for details of each command.
 
 
-## Features Overview
+## Features Overview <a name="features-overview"/>
 **Notes about the command format**
 * Words in `UPPER_CASE` are the parameters to be supplied by user.
 e.g. in `deadline TASK_NAME /by DEADLINE`, `TASK_NAME` and `DEADLINE` are parameters which can be used as `deadline 
