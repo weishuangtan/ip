@@ -224,6 +224,7 @@ ____________________________________________________________
 Feel free to continue adding to the list! :)
 ____________________________________________________________
 ```
+
 ### Marking task as done - `done`
 
 Marks a task in the list as done.
@@ -248,6 +249,7 @@ Good job! I checked this off the list for you:
 Ⓔ ✓ CG2271 finals (at: Nov 26 2020)
 ____________________________________________________________
 ```
+
 ### Deleting a task from the list - `delete`
 
 Deletes a task from the list of tasks.
@@ -273,12 +275,14 @@ Okay, I've removed this task:
 Now you have 2 tasks in the list.
 ____________________________________________________________
 ```
+
 ## FAQ
 **Q:** Can I transfer my data to another Computer?
 **A:** Yes. Simply set up `julia.jar` on your other device and copy over the
 `duke.txt` file in the same home folder.
 
 ## Command Summary
+
 Command | Format, Examples
 ------------ | -------------
 `bye` | `bye`
