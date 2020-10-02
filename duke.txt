@@ -1,2 +1,4 @@
 Here is the collated list of your tasks:
-(1) Ⓣ ✘ jldskfjw
+(1) Ⓣ ✘ build a snowman
+(2) Ⓔ ✓ build another snowman (at: Oct 15 2000)
+(3) Ⓓ ✓ build more snowmans (by: Nov 11 2000)
